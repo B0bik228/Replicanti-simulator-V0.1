@@ -1,0 +1,437 @@
+<html>
+    <head ><title>Replicanti simulator V0.1</title>
+    
+        <script>
+            var curr_log = 0;
+            var curr_sec_log = Math.log(2);
+            var mult1 = 0
+            var mult2 = 0;
+            var mult3 = 0;
+            var mult4 = 0;
+            var cost1 = 6;
+            var cost2 = 20;
+            var cost3 = 800;
+            var cost4 = 4000;
+            var root = 1;
+            var fake_root = 1;
+
+
+
+            var real1 = 0;
+            var real2 = 0;
+            var real3 = 0;
+            var real4 = 0;
+            var real5 = 0;
+            var real6 = 0;
+            var real7 = 0;
+            var real8 = 0;
+            var real9 = 0;
+            var real10 = 0;
+
+
+            var upg_unlocked = 0;
+            var upg_help = 0;
+            var quarks_unlocked = 0;
+            var u1 = 0;
+
+            setInterval(tick,10)
+
+
+            
+            function tick()
+            {
+                if(curr_log<4)
+                {
+                    real1 = Math.floor(Math.pow(10,curr_log)*100)/100;
+                }
+                else if(curr_log>3.999 && curr_log<1000000)
+                {
+                    real1 = Math.floor(Math.pow(10,curr_log-Math.floor(curr_log))*100)/100+"e"+Math.floor(curr_log);
+                }
+                else if(curr_log>1.0e6)
+                {
+                    real1 = Math.floor(Math.pow(10,curr_log-Math.floor(curr_log))*100)/100+'e'+Math.floor(curr_log/1.0e6*100)/100+' M';
+                }
+
+                if((curr_sec_log+mult1+mult2+mult3+mult4)/root<4)
+                {
+                    real2 = Math.floor(Math.pow(10,(curr_sec_log+mult1+mult2+mult3+mult4)/root)*100)/100;
+                }
+                else if((curr_sec_log+mult1+mult2+mult3+mult4)/root>3.999 && (curr_sec_log+mult1+mult2+mult3+mult4)/root<1000000)
+                {
+                    real2 = Math.floor(Math.pow(10,(curr_sec_log+mult1+mult2+mult3+mult4)/root-Math.floor((curr_sec_log+mult1+mult2+mult3+mult4)/root))*100)/100+"e"+Math.floor((curr_sec_log+mult1+mult2+mult3+mult4)/root);
+                }
+                else if((curr_sec_log+mult1+mult2+mult3+mult4)/root>1000000)
+                {
+                    real2 = Math.floor(Math.pow(10,(curr_sec_log+mult1+mult2+mult3+mult4)/root-Math.floor((curr_sec_log+mult1+mult2+mult3+mult4)/root))*100)/100+'e'+Math.floor((curr_sec_log+mult1+mult2+mult3+mult4)/root/1.0e6*100)/100+' M';
+                }
+
+                if(mult1<4)
+                {
+                    real3 = Math.floor(Math.pow(10,mult1)*100)/100;
+                }
+                else if(mult1>3.999 && mult1<1000000)
+                {
+                    real3 = Math.floor(Math.pow(10,mult1-Math.floor(mult1))*100)/100+"e"+Math.floor(mult1);
+                }
+                else if(mult1>1.0e6)
+                {
+                    real3 = Math.floor(Math.pow(10,mult1-Math.floor(mult1))*100)/100+'e'+Math.floor(mult1/1.0e6*100)/100+' M';
+                }
+
+                if(mult2<4)
+                {
+                    real4 = Math.floor(Math.pow(10,mult2)*100)/100;
+                }
+                else if(mult2>3.999 && mult2<1000000)
+                {
+                    real4 = Math.floor(Math.pow(10,mult2-Math.floor(mult2))*100)/100+"e"+Math.floor(mult2);
+                }
+                else if(mult2>1.0e6)
+                {
+                    real4 = Math.floor(Math.pow(10,mult2-Math.floor(mult2))*100)/100+'e'+Math.floor(mult2/1.0e6*100)/100+' M';
+                }
+
+                if(mult3<4)
+                {
+                    real5 = Math.floor(Math.pow(10,mult3)*100)/100;
+                }
+                else if(mult3>3.999 && mult3<1000000)
+                {
+                    real5 = Math.floor(Math.pow(10,mult3-Math.floor(mult3))*100)/100+"e"+Math.floor(mult3);
+                }
+                else if(mult3>1.0e6)
+                {
+                    real5 = Math.floor(Math.pow(10,mult3-Math.floor(mult3))*100)/100+'e'+Math.floor(mult3/1.0e6*100)/100+' M';
+                }
+
+                if(mult4<4)
+                {
+                    real6 = Math.floor(Math.pow(10,mult4)*100)/100;
+                }
+                else if(mult4>3.999 && mult4<1000000)
+                {
+                    real6 = Math.floor(Math.pow(10,mult4-Math.floor(mult4))*100)/100+"e"+Math.floor(mult4);
+                }
+                else if(mult4>1.0e6)
+                {
+                    real6 = Math.floor(Math.pow(10,mult4-Math.floor(mult4))*100)/100+'e'+Math.floor(mult4/1.0e6*100)/100+' M';
+                }
+                
+                if(cost1<4)
+                {
+                    real7 = Math.floor(Math.pow(10,cost1)*100)/100;
+                }
+                else if(cost1>3.999)
+                {
+                    real7 = Math.floor(Math.pow(10,cost1-Math.floor(cost1))*100)/100+"e"+Math.floor(cost1);
+                }
+                else if(cost1>1.0e6)
+                {
+                    real7 = Math.floor(Math.pow(10,cost1-Math.floor(cost1))*100)/100+'e'+Math.floor(cost1/1.0e6*100)/100+' M';
+                }
+
+                if(cost2<4)
+                {
+                    real8 = Math.floor(Math.pow(10,cost2)*100)/100;
+                }
+                else if(cost2>3.999)
+                {
+                    real8 = Math.floor(Math.pow(10,cost2-Math.floor(cost2))*100)/100+"e"+Math.floor(cost2);
+                }
+                else if(cost2>1.0e6)
+                {
+                    real8 = Math.floor(Math.pow(10,cost2-Math.floor(cost2))*100)/100+'e'+Math.floor(cost2/1.0e6*100)/100+' M';
+                }
+
+                if(cost3<4)
+                {
+                    real9 = Math.floor(Math.pow(10,cost3)*100)/100;
+                }
+                else if(cost3>3.999)
+                {
+                    real9 = Math.floor(Math.pow(10,cost3-Math.floor(cost3))*100)/100+"e"+Math.floor(cost3);
+                }
+                else if(cost3>1.0e6)
+                {
+                    real9 = Math.floor(Math.pow(10,cost3-Math.floor(cost3))*100)/100+'e'+Math.floor(cost3/1.0e6*100)/100+' M';
+                }
+
+                if(cost4<4)
+                {
+                    real10 = Math.floor(Math.pow(10,cost4)*100)/100;
+                }
+                else if(cost4>3.999)
+                {
+                    real10 = Math.floor(Math.pow(10,cost4-Math.floor(cost4))*100)/100+"e"+Math.floor(cost4);
+                }
+                else if(cost4>1.0e6)
+                {
+                    real10 = Math.floor(Math.pow(10,cost4-Math.floor(cost4))*100)/100+'e'+Math.floor(cost4/1.0e6*100)/100+' M';
+                }
+
+
+
+
+                if(curr_log>100)
+                {
+                    if(upg_help==0)
+                    {
+                    upg_help = 1;
+                    }
+                }
+
+                if(upg_help==0)
+                {
+                document.getElementById('a1').style.display = 'none';
+                }
+
+
+
+
+
+                curr_log = curr_log+((curr_sec_log+mult1+mult2+mult3+mult4)/115)/root
+
+
+
+                document.getElementById('Replicanti').textContent = 'You have '+real1+' replicanti';
+                document.getElementById('Base multi').textContent = 'Which is multiplied by x'+real2+' each second';
+                document.getElementById('Mult mult').textContent = 'Generator A,ㅤㅤㅤㅤEffect: x'+real3+'ㅤㅤㅤㅤㅤCost: '+real7;
+                document.getElementById('mult2').textContent = 'Generator B,ㅤㅤㅤㅤEffect: x'+real4+'ㅤㅤㅤㅤㅤCost: '+real8;
+                document.getElementById('mult3').textContent = 'Generator C,ㅤㅤㅤㅤEffect: x'+real5+'ㅤㅤㅤㅤㅤCost: '+real9;
+                document.getElementById('mult4').textContent = 'Generator D,ㅤㅤㅤㅤEffect: x'+real6+'ㅤㅤㅤㅤㅤCost: '+real10;
+                document.getElementById('root').textContent = 'Due to replicanti overflow, your replicanti gain is √'+fake_root;
+
+                if(u1==0)
+                {
+                    document.getElementById('u1').textContent = 'U1: Gen A effect scales better. (1.0e100 REPLICANTI)';
+                }
+                else
+                {
+                    document.getElementById('u1').textContent = 'U1: Gen A effect scales better. (BOUGHT)';
+                }
+
+
+
+                if(upg_unlocked==0)
+                {
+                    document.getElementById('info').textContent = 'Unlock upgrades at 1e100 replicanti';
+                }
+                else if(upg_unlocked==1 && quarks_unlocked==0)
+                {
+                    document.getElementById('info').textContent = 'Unlock quarks at 1e10000 replicanti';
+                }
+                else if(upg_unlocked==1 && quarks_unlocked==1)
+                {
+                    document.getElementById('info').textContent = 'Complete the game at 1.0e60 quarks!';
+                }
+
+
+                if(upg_unlocked==0)
+                {
+                    if(curr_log>100)
+                    {
+                        upg_unlocked = 1
+                    }
+                }
+
+                if(quarks_unlocked==0)
+                {
+                    if(curr_log>10000)
+                    {
+                        quarks_unlocked = 1
+                    }
+                }
+
+
+                if(upg_unlocked==1)
+                {
+                    document.getElementById('b').style.display = 'block'
+                }
+                else
+                {
+                    document.getElementById('b').style.display = 'none'
+                }
+
+                
+                if(quarks_unlocked==1)
+                {
+                    document.getElementById('c').style.display = 'block'
+                }
+                else
+                {
+                    document.getElementById('c').style.display = 'none'
+                }
+
+
+
+                if(curr_log>100)
+                {
+                    root = Math.floor((curr_log-100)/3.61*1000)/1000;
+                    document.getElementById('3').style.display = 'block';
+                }
+                else
+                {
+                    root = 1;
+                    document.getElementById('3').style.display = 'none';
+                }
+
+                if(root<10000)
+                {
+                    fake_root = Math.floor(root*1000)/1000;
+                }
+                else if(root>1000 && root<1.0e6)
+                {
+                    fake_root = Math.floor(root/1.0e3*1000)/1000+' K';
+                }
+                else if(root>1.0e6 && root<1.0e9)
+                {
+                    fake_root = Math.floor(root/1.0e6*1000)/1000+' M';
+                }
+                else if(root>1.0e9 && root<1.0e12)
+                {
+                    fake_root = Math.floor(root/1.0e9*1000)/1000+' B';
+                }
+                else if(root>1.0e12)
+                {
+                    fake_root = Math.floor(root/1.0e12*1000)/1000+' T';
+                }
+            }
+
+            function A()
+                {
+                    if(curr_log>cost1)
+                    {
+                    curr_log = 0
+                    cost1 = cost1+(3+cost1/25)
+
+                    if(cost1>200)
+                    {
+                        cost1 = cost1*1.05
+                    }
+
+                    if(u1==0)
+                    {
+                        mult1 = mult1+0.17
+                    }
+                    else
+                    {
+                        mult1 = mult1+0.17*1.5
+                    }
+
+                    }
+                }
+
+                function B()
+                {
+                    if(curr_log>cost2)
+                    {
+                    curr_log = 0
+                    cost2 = cost2+(10+cost2/22)
+
+                    if(cost2>308)
+                    {
+                        cost2 = cost2*1.065
+                    }
+
+                    mult2 = mult2+0.19
+                    }
+                }
+
+
+                function C()
+                {
+                    if(curr_log>cost3)
+                    {
+                    curr_log = 0
+                    cost3 = cost3+(225+cost1/36)
+
+                    if(cost3>2000)
+                    {
+                        cost3 = cost3*1.08
+                    }
+
+                    mult3 = mult3+2
+                    }
+                }
+
+                function D()
+                {
+                    if(curr_log>cost4)
+                    {
+                    curr_log = 0
+                    cost4 = cost4+(1000+cost4/25)
+
+                    if(cost2>25000)
+                    {
+                        cost2 = cost2*1.11
+                    }
+
+                    mult2 = mult2+50.56
+                    }
+                }
+
+                function U1()
+                {
+                    if(curr_log>100)
+                    {
+                        u1 = 1
+                        mult1 = mult1*1.5
+                    }
+                }
+
+
+                function menu(a)
+                {
+                    if(a==1)
+                    {
+                        document.getElementById('3').style.display = 'block';
+                        document.getElementById('d').style.display = 'block';
+                        document.getElementById('e').style.display = 'block';
+                        document.getElementById('f').style.display = 'block';
+                        document.getElementById('g').style.display = 'block';
+                        document.getElementById('3').style.display = 'block';
+                        document.getElementById('4').style.display = 'block';
+                        document.getElementById('root').style.display = 'block';
+                    }
+                    else
+                    {
+                        document.getElementById('3').style.display = 'none';
+                        document.getElementById('d').style.display = 'none';
+                        document.getElementById('e').style.display = 'none';
+                        document.getElementById('f').style.display = 'none';
+                        document.getElementById('g').style.display = 'none';
+                        document.getElementById('3').style.display = 'none';
+                        document.getElementById('4').style.display = 'none';
+                        document.getElementById('root').style.display = 'none';
+                    }
+
+                    if(a==2 && upg_help==1)
+                    {
+                        document.getElementById('a1').style.display = 'block';
+                    }
+                    else
+                    {
+                        document.getElementById('a1').style.display = 'none';
+                    }
+                }
+        </script>
+
+    </head>
+
+    <body style="background-color: aquamarine;">
+        <h1 id="info"></h1> <br>
+        <button id="a"; onclick="menu(1)"; style="background-color: orangered;"><h1>ㅤㅤReplicantiㅤㅤ</h1></button>   <button id="b"; onclick="menu(2)"; style="background-color: aqua;"><h1>ㅤㅤUpgradesㅤㅤ</h1></button>   <button id="c"; onclick="menu(3)"><h1>ㅤㅤㅤQuarksㅤㅤㅤ</h1></button>  <br>
+        <span id="1"><h1 id="Replicanti"></h1></span>
+        <span id="2"><h2 id="Base multi"></h2></span>
+        <br>
+        <button onclick="A()"; id="d"><h1 id="Mult mult"></h1></button>  <br>
+        <button onclick="B()"; id="e"><h1 id="mult2"></h1></button>   <br>
+        <button onclick="C()"; id="f"><h1 id="mult3"></h1></button>   <br>
+        <button onclick="D()"; id="g"><h1 id="mult4"></h1></button>   <br><br><br>
+        <span id="3";><h2 id="root"; style="text-emphasis-color: red;"></h2></span>
+        <span id="4"><b>Note that this is my first game, so if you have any suggestions/bug reports, rati- uuh i mean Piter#0427</b></span>
+
+        <button id="a1"; onclick="U1()"><h2 id="u1"></h2></button>
+    </body>
+</html>
